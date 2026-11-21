@@ -77,22 +77,27 @@ listaTarefa.addEventListener("click", (e) => {
         if((li.classList.toggle("completed")==true)){
             valorConcluido++
             contConcluido.value = valorConcluido
-
-            valorPendente--
-            contPendente.value = valorPendente
+            
             if (contPendente.value < 0){
                 localStorage.removeItem('contPendente')
+                valorPendente = 0
+            }
+            else{
+                valorPendente--
+                contPendente.value = valorPendente
             }
     
         }
-        else if (valorConcluido > 0) {
-            valorConcluido--
-            contConcluido.value = valorConcluido
-
+        else {
             valorPendente++
             contPendente.value = valorPendente
             if (contConcluido.value < 0){
                 localStorage.removeItem('contConcluido')
+                valorConcluido = 0
+            }
+            else{
+                valorConcluido--
+                contConcluido.value = valorConcluido
             }
         }
         
@@ -100,18 +105,24 @@ listaTarefa.addEventListener("click", (e) => {
     } else if (e.target.classList.contains("deletarTarefa")) {
         li.remove()
         if(li.classList == "completed"){
-            valorConcluido--
-            contConcluido.value = valorConcluido
             if (contConcluido.value < 0){
                 localStorage.removeItem('contConcluido')
+                valorConcluido = 0
+                
+            }else{
+                valorConcluido--
+                contConcluido.value = valorConcluido
             }
             
         }
         else{
-            valorPendente--
-            contPendente.value = valorPendente
             if (contPendente.value < 0){
                 localStorage.removeItem('contPendente')
+                valorPendente = 0
+            }
+            else{
+                valorPendente--
+                contPendente.value = valorPendente
             }
         }
     }
