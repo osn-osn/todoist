@@ -1,0 +1,293 @@
+/* variaveis globais*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none; /* Adicionei isso */ 
+    
+}
+/* */
+body{
+    width: 100%;
+    font-family: Trebuchet MS, sans-serif;
+    background-color: #b2d6fc8d;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/*
+  aplicando um texto flutuante 
+ body::before {
+    content: "To Do List";
+    color: black;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 40px;
+    opacity: 0.2;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: float 18s linear infinite;
+}
+
+ 
+@keyframes float {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(50%);
+    }       
+}
+*/
+.container{
+    padding: 30px;
+    border-radius: 19px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 89%;
+    max-width: 450px;
+    position: flex;
+    background-color: rgba(74, 144, 201, 0.507);
+   
+}
+
+h1{
+    text-align: center;
+    color:#072a43;
+    margin-bottom: 20px;
+    
+}
+
+#conteudo{
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+    
+}
+
+#adicionarTarefa{
+    flex-grow:1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color:#072a43ce;;
+    width: 200%;
+}
+
+#adicionarTarefaButton{
+    padding: 10px 15px;
+    background-color: #22558c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 5px;
+    border:none;
+    width: 100%;
+}
+
+#adicionarTarefaButton:hover{
+    background-color: #1a4068e7;
+}
+
+#nada{
+    display: none;
+    font-size: 20px;
+    color: #485685;
+    width: 100%;
+    text-align: center;
+}
+
+#listaTarefa:empty + #nada{
+    display: block;
+}
+
+#listaTarefa{
+    overflow-y: auto;
+    max-height: 200px;
+    
+    scrollbar-width: none;
+    justify-content: center;
+    width: 100%;
+    list-style: none;
+    padding: 3px;
+}
+
+#listaTarefa li{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(62, 91, 114);
+    margin-bottom: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#listaTarefa li.completed{
+    background-color: rgb(93, 129, 160);
+}
+
+#listaTarefa li span{
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+#listaTarefa li.completed span{
+    text-decoration: line-through;
+    color: rgb(50, 35, 35);
+}
+
+.deletarTarefa{
+    background-color: #4172ae;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+
+}
+
+.deletarTarefa:hover{
+    background-color: #3a669bc1;
+}
+
+html, body{
+    color: aliceblue;
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#textQuant{
+    text-align: center;
+    color:#072a43e3;
+}
+#quantidade{
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    gap: 100px;
+    color:#072a43ce;
+    width: 100%;
+}
+
+#campoTarefa{
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px dashed rgb(83, 104, 122);
+    border-radius: 15px
+}
+
+#contPendentes, #contConcluidas{
+    border: none;
+    width: 100%;
+    background: none;
+    color: #6A3068;
+}
+
+/*
+@media screen and (max-width: 1220px) {
+    body{
+        width: 100%;
+        
+    }
+
+    h1{
+        font-size: 23px;
+    }
+    
+    
+    #adicionarTarefa{
+        width: 150px;
+        font-size: 14px;
+
+    }
+
+     #adicionarTarefaButton{
+        width:75px;
+        font-size: 12px;
+        justify-content: center;
+
+    }
+
+    #listaTarefa{
+        font-size: 14px;
+        width: 100%;
+        max-height: 150px;
+    }
+
+    #nada{
+        font-size:10px;
+        right: 50px;
+    }
+
+    #quantidade{
+        font-size: 15px;
+        gap: 16px;
+    
+    }
+
+    #contPendentes, #contConcluidas{
+        width: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        width: 100%;
+        
+    }
+
+    h1{
+        font-size: 23px;
+    }
+    
+    
+    #adicionarTarefa{
+        width: 150px;
+        font-size: 14px;
+
+    }
+
+     #adicionarTarefaButton{
+        width:75px;
+        font-size: 12px;
+        justify-content: center;
+
+    }
+
+    #listaTarefa{
+        font-size: 14px;
+        width: 100%;
+        max-height: 150px;
+    }
+
+    #nada{
+        font-size:15px;
+    }
+    #quantidade{
+        font-size: 15px;
+        gap: 16px;
+    
+    }
+
+    #contPendentes, #contConcluidas{
+        width: 25px;
+    }
+    
+}
+    */
