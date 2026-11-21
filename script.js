@@ -4,18 +4,16 @@ const adicionarTarefa = document.getElementById('adicionarTarefa')
 const adicionarTarefaButton = document.getElementById('adicionarTarefaButton')
 const listaTarefa = document.getElementById('listaTarefa')
 
-let contConcluido = document.getElementById('contConcluidas')
+const contConcluido = document.getElementById('contConcluidas')
 let contPendente = document.getElementById('contPendentes')
 
-if  ((Number.isNaN(contConcluido.value)) || (contConcluido.value == null) ||(contConcluido.value < 0) ){
-    contConcluido.value = 0
-}
+
 
 if ((Number.isNaN(contPendente.value)) || (contPendente.value == null) || (contPendente.value < 0)  ){
     contPendente.value = 0
 }
 
-let valorConcluido = contConcluido.value
+let valorConcluido = contConcluido.value || 0
 let valorPendente = contPendente.value
 
 
