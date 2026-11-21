@@ -7,11 +7,11 @@ const listaTarefa = document.getElementById('listaTarefa')
 let contConcluido = document.getElementById('contConcluidas')
 let contPendente = document.getElementById('contPendentes')
 
-if  ((Number.isNaN(contConcluido.value)) || (contConcluido.value < 0) ){
+if  ((Number.isNaN(contConcluido.value)) || (contConcluido.value == null) ||(contConcluido.value < 0) ){
     contConcluido.value = 0
 }
 
-if ((Number.isNaN(contPendente.value)) || (contPendente.value < 0)  ){
+if ((Number.isNaN(contPendente.value)) || (contPendente.value == null) || (contPendente.value < 0)  ){
     contPendente.value = 0
 }
 
