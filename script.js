@@ -90,7 +90,7 @@ listaTarefa.addEventListener("click", (e) => {
         if((li.classList.toggle("completed")==true)){
             valorConcluido++
             contConcluido.value = valorConcluido
-            
+            console.log(valorConcluido)
             console.log(contConcluido.value)
             valorPendente--
             contPendente.value = valorPendente
