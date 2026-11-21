@@ -9,6 +9,17 @@ const contPendente = document.getElementById('contPendentes')
 let valorConcluido = contConcluido.value
 let valorPendente = contPendente.value
 
+if ((contPendente.value < 0) || (Number.isNaN(contPendente.value))){
+    localStorage.removeItem('contPendente')
+    contPendente.value = 0
+    valorPendente = contPendente.value
+}
+
+if ((contConcluido.value < 0) || (Number.isNaN(contConcluido.value))){
+    localStorage.removeItem('contConcluido')
+    contConcluido.value = 0
+    valorConcluido = contConcluido.value
+}
 // recupera os dados armazenadas
 carregarTarefa = () =>{
     const Tarefa = JSON.parse(localStorage.getItem('Tarefa') || '[]')
@@ -75,53 +86,33 @@ listaTarefa.addEventListener("click", (e) => {
 
     if (e.target.tagName === "SPAN") {
         if((li.classList.toggle("completed")==true)){
+            valorConcluido++
+            contConcluido.value = valorConcluido
             
-            if ((contPendente.value < 0) || (Number.isNaN(contPendente.value))){
-                localStorage.removeItem('contPendente')
-                contPendente.value = valorConcluido++
-            }
-            else{
-                valorPendente--
-                contPendente.value = valorPendente
-            }
+            valorPendente--
+            contPendente.value = valorPendente
     
         }
         else {
             valorPendente++
             contPendente.value = valorPendente
-            if ((contConcluido.value < 0) || (Number.isNaN(contConcluido.value))){
-                localStorage.removeItem('contConcluido')
-                contConcluido.value = 0
-            }
-            else{
-                valorConcluido--
-                contConcluido.value = valorConcluido
-            }
+            
+            valorConcluido--
+            contConcluido.value = valorConcluido
         }
         
         
     } else if (e.target.classList.contains("deletarTarefa")) {
         li.remove()
         if(li.classList == "completed"){
-            if ((contConcluido.value < 0) || (Number.isNaN(contConcluido.value))){
-                localStorage.removeItem('contConcluido')
-                contConcluido.value = 0
-                
-            }else{
-                valorConcluido--
-                contConcluido.value = valorConcluido
-            }
+            valorConcluido--
+            contConcluido.value = valorConcluido
             
         }
         else{
-            if ((contPendente.value < 0) || (Number.isNaN(contPendente.value))){
-                localStorage.removeItem('contPendente')
-                contPendente.value = 0
-            }
-            else{
-                valorPendente--
-                contPendente.value = valorPendente
-            }
+            valorPendente--
+            contPendente.value = valorPendente
+            
         }
     }
 
