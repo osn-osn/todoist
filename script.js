@@ -1,5 +1,5 @@
 
-// identica os elementos que estão no HTML
+// identica os elementos que estão no HTML por meio dos IDs
 const adicionarTarefa = document.getElementById('adicionarTarefa')
 const adicionarTarefaButton = document.getElementById('adicionarTarefaButton')
 const listaTarefa = document.getElementById('listaTarefa')
@@ -8,30 +8,38 @@ let contConcluido = document.getElementById('contConcluidas')
 let contPendente = document.getElementById('contPendentes')
 
 //verifica se os valores dos contadores são negativo, nulo ou NaN, se for, é atribuido 0 para a variavel
-if  ((Number.isNaN(Number(contConcluido.value)))  ||(Number(contConcluido.value) < 0) ){
+if  ((Number.isNaN(Number(contConcluido.value))) || (contConcluido.value < 0) || (contConcluido.value == null)){
+    localStorage.removeItem('contConcluido')
     contConcluido.value = 0
+    localStorage.setItem('contConcluido', 0)
 }
 
-if ((Number.isNaN(contPendente.value)) || (contPendente.value == null) || (contPendente.value < 0)  ){
+if ((Number.isNaN(Number(contPendente.value)))  || (contPendente.value < 0) || (contPendente.value == null) ){
+    localStorage.removeItem('contPendente')
     contPendente.value = 0
+    localStorage.setItem('contPendente', 0); 
 }
 
 let valorConcluido = Number(contConcluido.value)
-let valorPendente = contPendente.value
-console.log(contConcluido.value)
-console.log(valorConcluido)
+let valorPendente = Number(contPendente.value)
 
-// recupera os dados armazenadas no navegador por meio do localstorange
+
+// recupera os dados armazenadas no navegador por meio do localStorane, 
+// fazendo com que os dados não sejam perdidos
 carregarTarefa = () =>{
     const Tarefa = JSON.parse(localStorage.getItem('Tarefa') || '[]')
     Tarefa.forEach(({text, completed}) => criarElementoTarefa(text, completed))
 
-    valorConcluido = localStorage.getItem('contConcluido')
+    valorConcluido = Number(localStorage.getItem('contConcluido')) || 0 // 0 obrigátorio para evitar que ocorra um bg que exiba NaN
     contConcluido.value = valorConcluido
 
-    valorPendente = localStorage.getItem('contPendente')
-    contPendente.value = valorPendente
-
+    // sam adicionou isso
+    if (valorPendente >= 0) {
+        valorPendente = Number(localStorage.getItem('contPendente'))
+        contPendente.value = valorPendente
+    } else {
+        valorPendente = 0;
+    }
 }
 // armazena os valores das variaveis no local storage, assim quando se atualiza a pagina as tarefas não são perdidas
 const salvarTarefa = () => {
@@ -43,8 +51,13 @@ const salvarTarefa = () => {
     
     localStorage.setItem("Tarefa", JSON.stringify(Tarefa))
     localStorage.setItem("contConcluido", valorConcluido)
-    localStorage.setItem("contPendente", valorPendente)
     
+    // sam adicionou isso
+    if (valorPendente < 0) {
+        localStorage.setItem("contPendente", 0);
+    } else {
+        localStorage.setItem("contPendente", valorPendente) // antes só haviamos implementado isso, mas opt
+    }
 }
 
 // cria uma nova tarefa e coloca na lista dos usuarios
@@ -91,39 +104,45 @@ listaTarefa.addEventListener("click", (e) => {
         if((li.classList.toggle("completed")==true)){
             valorConcluido++
             contConcluido.value = valorConcluido
-            
-            console.log(contConcluido.value)
-            valorPendente--
-            contPendente.value = valorPendente
-    
+
+            if (valorPendente > 0) { // se for maior que zero, faz o decremento 
+                valorPendente--
+                contPendente.value = valorPendente
+            }
         }
         else {
             valorPendente++
             contPendente.value = valorPendente
             
-            valorConcluido--
-            contConcluido.value = valorConcluido
+            if (valorConcluido > 0) { // garante que o decremento vai até zero
+                valorConcluido--;
+                contConcluido.value = valorConcluido
+            }
         }
         
         
     } else if (e.target.classList.contains("deletarTarefa")) {
         li.remove()
-        if(li.classList == "completed"){
-            valorConcluido--
-            contConcluido.value = valorConcluido
+        if(li.classList.contains("completed")) {
+            
+            if (valorConcluido > 0) { // garante que o decremento vai até zero
+                valorConcluido--;
+                contConcluido.value = valorConcluido
+            }
             console.log(contConcluido.value)
             
         }
         else{
-            valorPendente--
-            contPendente.value = valorPendente
+
+            if (valorPendente > 0) { // se for maior que zero, faz o decremento 
+                valorPendente--
+                contPendente.value = valorPendente
+            }
             
         }
     }
 
     salvarTarefa()
 })
-
-
 
 carregarTarefa()

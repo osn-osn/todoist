@@ -3,10 +3,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    user-select: none; /* Adicionei isso */ 
+    user-select: none; 
     
 }
-/* */
+/*estrutura do corpo do html */
 body{
     width: 100%;
     font-family: Trebuchet MS, sans-serif;
@@ -19,44 +19,19 @@ body{
     overflow-x: hidden;
 }
 
-/*
-  aplicando um texto flutuante 
- body::before {
-    content: "To Do List";
-    color: black;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 40px;
-    opacity: 0.2;
-    pointer-events: none;
-    white-space: nowrap;
-    animation: float 18s linear infinite;
-}
 
- 
-@keyframes float {
-    0% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(50%);
-    }       
-}
-*/
 .container{
     padding: 30px;
     border-radius: 19px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 89%;
+    width: 100%;
     max-width: 450px;
     position: flex;
     background-color: rgba(74, 144, 201, 0.507);
    
 }
 
+/* estrutura do título 1 */
 h1{
     text-align: center;
     color:#072a43;
@@ -64,6 +39,7 @@ h1{
     
 }
 
+/*form*/
 #conteudo{
     display: flex;
     margin-bottom: 20px;
@@ -73,6 +49,7 @@ h1{
 
 #adicionarTarefa{
     flex-grow:1;
+    font-size: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -90,11 +67,11 @@ h1{
     transition: background-color 0.3s;
     margin: 5px;
     border:none;
-    width: 100%;
+    width: 80%;
 }
 
 #adicionarTarefaButton:hover{
-    background-color: #1a4068e7;
+    background-color: #1a3c61b6;
 }
 
 #nada{
@@ -146,6 +123,8 @@ h1{
     color: rgb(50, 35, 35);
 }
 
+
+/*butão de deletar tarefa*/
 .deletarTarefa{
     background-color: #4172ae;
     color: #fff;
@@ -157,6 +136,7 @@ h1{
     transition: background-color 0.3s;
 
 }
+
 
 .deletarTarefa:hover{
     background-color: #3a669bc1;
@@ -172,19 +152,28 @@ html, body{
     justify-content: center;
     align-items: center;
 }
+
+/* "Quantidade de Tarefas" */
 #textQuant{
     text-align: center;
+    font-size: 19px;
     color:#072a43e3;
+    font-weight: bold;
 }
+/* Pendentes && Concluidas */
 #quantidade{
     margin-top: 10px;
     justify-content: center;
     display: flex;
-    gap: 90px;
+    gap: 10px;
     color:#072a43ce;
     width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
 }
 
+/*estilização do campo da lista das tarefas*/
 #campoTarefa{
     margin-top: 15px;
     padding: 10px;
@@ -192,102 +181,13 @@ html, body{
     border-radius: 15px
 }
 
+/* Valores númericos exibidos em Pendentes e Concluidas */
 #contPendentes, #contConcluidas{
+    display: inline;
     border: none;
-    width: 100%;
+    width: 20%;
     background: none;
     color: #6A3068;
+    font-weight: bold;
+    font-size: 18px;
 }
-
-/*
-@media screen and (max-width: 1220px) {
-    body{
-        width: 100%;
-        
-    }
-
-    h1{
-        font-size: 23px;
-    }
-    
-    
-    #adicionarTarefa{
-        width: 150px;
-        font-size: 14px;
-
-    }
-
-     #adicionarTarefaButton{
-        width:75px;
-        font-size: 12px;
-        justify-content: center;
-
-    }
-
-    #listaTarefa{
-        font-size: 14px;
-        width: 100%;
-        max-height: 150px;
-    }
-
-    #nada{
-        font-size:10px;
-        right: 50px;
-    }
-
-    #quantidade{
-        font-size: 15px;
-        gap: 16px;
-    
-    }
-
-    #contPendentes, #contConcluidas{
-        width: 25px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    body{
-        width: 100%;
-        
-    }
-
-    h1{
-        font-size: 23px;
-    }
-    
-    
-    #adicionarTarefa{
-        width: 150px;
-        font-size: 14px;
-
-    }
-
-     #adicionarTarefaButton{
-        width:75px;
-        font-size: 12px;
-        justify-content: center;
-
-    }
-
-    #listaTarefa{
-        font-size: 14px;
-        width: 100%;
-        max-height: 150px;
-    }
-
-    #nada{
-        font-size:15px;
-    }
-    #quantidade{
-        font-size: 15px;
-        gap: 16px;
-    
-    }
-
-    #contPendentes, #contConcluidas{
-        width: 25px;
-    }
-    
-}
-    */
