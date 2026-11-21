@@ -9,12 +9,12 @@ let contPendente = document.getElementById('contPendentes')
 let valorConcluido = contConcluido.value
 let valorPendente = contPendente.value
 
-if ((contConcluido.value < 0) || (Number.isNaN(contConcluido.value))){
+if  ((Number.isNaN(contConcluido.value)) || (contConcluido.value < 0) ){
     localStorage.removeItem('contConcluido')
     valorConcluido = 0
 }
 
-if ((contPendente.value < 0) || (Number.isNaN(contPendente.value))){
+if ((Number.isNaN(contPendente.value)) || (contPendente.value < 0)  ){
     localStorage.removeItem('contPendente')
     valorPendente = 0
 }
