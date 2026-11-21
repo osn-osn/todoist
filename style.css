@@ -180,7 +180,7 @@ html, body{
     margin-top: 10px;
     justify-content: center;
     display: flex;
-    gap: 100px;
+    gap: 100%;
     color:#072a43ce;
     width: 100%;
 }
