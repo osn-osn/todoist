@@ -6,18 +6,19 @@ const listaTarefa = document.getElementById('listaTarefa')
 
 let contConcluido = document.getElementById('contConcluidas')
 let contPendente = document.getElementById('contPendentes')
-let valorConcluido = contConcluido.value
-let valorPendente = contPendente.value
 
 if  ((Number.isNaN(contConcluido.value)) || (contConcluido.value < 0) ){
-    localStorage.removeItem('contConcluido')
-    valorConcluido = 0
+    contConcluido.value = 0
 }
 
 if ((Number.isNaN(contPendente.value)) || (contPendente.value < 0)  ){
-    localStorage.removeItem('contPendente')
-    valorPendente = 0
+    contPendente.value = 0
 }
+
+let valorConcluido = contConcluido.value
+let valorPendente = contPendente.value
+
+
 // recupera os dados armazenadas
 carregarTarefa = () =>{
     const Tarefa = JSON.parse(localStorage.getItem('Tarefa') || '[]')
