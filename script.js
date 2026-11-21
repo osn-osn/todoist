@@ -75,12 +75,10 @@ listaTarefa.addEventListener("click", (e) => {
 
     if (e.target.tagName === "SPAN") {
         if((li.classList.toggle("completed")==true)){
-            valorConcluido++
-            contConcluido.value = valorConcluido
             
             if ((contPendente.value < 0) || (Number.isNaN(contPendente.value))){
                 localStorage.removeItem('contPendente')
-                contPendente.value = 0
+                contPendente.value = valorConcluido++
             }
             else{
                 valorPendente--
