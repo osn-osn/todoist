@@ -8,12 +8,12 @@ let contConcluido = document.getElementById('contConcluidas')
 let contPendente = document.getElementById('contPendentes')
 
 //verifica se os valores dos contadores são negativo, nulo ou NaN, se for, é atribuido 0 para a variavel
-if  ((Number.isNaN(contConcluido.value)) || (contConcluido.value == null) ||(contConcluido.value < 0) ){
+if  ((Number.isNaN(Number(contConcluido.value)))  ||(Number(contConcluido.value) < 0) ){
     contConcluido.value = 0
 }
 
 if ((Number.isNaN(contPendente.value)) || (contPendente.value == null) || (contPendente.value < 0)  ){
-    contPendente.value = 0
+    contPendente.value ??= 0
 }
 
 let valorConcluido = contConcluido.value
@@ -90,7 +90,7 @@ listaTarefa.addEventListener("click", (e) => {
         if((li.classList.toggle("completed")==true)){
             valorConcluido++
             contConcluido.value = valorConcluido
-            console.log(valorConcluido)
+            
             console.log(contConcluido.value)
             valorPendente--
             contPendente.value = valorPendente
