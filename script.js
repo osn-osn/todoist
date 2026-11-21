@@ -19,7 +19,7 @@ if ((Number.isNaN(contPendente.value)) || (contPendente.value == null) || (contP
 let valorConcluido = Number(contConcluido.value)
 let valorPendente = contPendente.value
 console.log(contConcluido.value)
-console.log(valorConcluido.value)
+console.log(valorConcluido)
 
 // recupera os dados armazenadas no navegador por meio do localstorange
 carregarTarefa = () =>{
