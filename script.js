@@ -80,7 +80,7 @@ listaTarefa.addEventListener("click", (e) => {
             
             if ((contPendente.value < 0) || (Number.isNaN(contPendente.value)){
                 localStorage.removeItem('contPendente')
-                valorPendente = 0
+                contPendente.value = 0
             }
             else{
                 valorPendente--
@@ -93,7 +93,7 @@ listaTarefa.addEventListener("click", (e) => {
             contPendente.value = valorPendente
             if ((contConcluido.value < 0) || (Number.isNaN(contConcluido.value)){
                 localStorage.removeItem('contConcluido')
-                valorConcluido = 0
+                contConcluido.value = 0
             }
             else{
                 valorConcluido--
@@ -107,7 +107,7 @@ listaTarefa.addEventListener("click", (e) => {
         if(li.classList == "completed"){
             if ((contConcluido.value < 0) || (Number.isNaN(contConcluido.value)){
                 localStorage.removeItem('contConcluido')
-                valorConcluido = 0
+                contConcluido.value = 0
                 
             }else{
                 valorConcluido--
@@ -118,7 +118,7 @@ listaTarefa.addEventListener("click", (e) => {
         else{
             if ((contPendente.value < 0) || (Number.isNaN(contPendente.value)){
                 localStorage.removeItem('contPendente')
-                valorPendente = 0
+                contPendente.value = 0
             }
             else{
                 valorPendente--
