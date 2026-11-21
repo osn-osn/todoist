@@ -3,18 +3,18 @@
 const adicionarTarefa = document.getElementById('adicionarTarefa')
 const adicionarTarefaButton = document.getElementById('adicionarTarefaButton')
 const listaTarefa = document.getElementById('listaTarefa')
-const contConcluido = document.getElementById('contConcluidas')
-const contPendente = document.getElementById('contPendentes')
 
+let contConcluido = document.getElementById('contConcluidas')
+let contPendente = document.getElementById('contPendentes')
 let valorConcluido = contConcluido.value
 let valorPendente = contPendente.value
 
-if ((valorConcluido < 0) || (Number.isNaN(valorConcluido))){
+if ((contConcluido.value < 0) || (Number.isNaN(contConcluido.value))){
     localStorage.removeItem('contConcluido')
     valorConcluido = 0
 }
 
-if ((valorPendente < 0) || (Number.isNaN(valorPendente))){
+if ((contPendente.value < 0) || (Number.isNaN(contPendente.value))){
     localStorage.removeItem('contPendente')
     valorPendente = 0
 }
