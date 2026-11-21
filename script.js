@@ -9,16 +9,14 @@ const contPendente = document.getElementById('contPendentes')
 let valorConcluido = contConcluido.value
 let valorPendente = contPendente.value
 
-if ((contPendente.value < 0) || (Number.isNaN(contPendente.value))){
-    localStorage.removeItem('contPendente')
-    contPendente.value = 0
-    valorPendente = contPendente.value
+if ((valorConcluido < 0) || (Number.isNaN(valorConcluido))){
+    localStorage.removeItem('contConcluido')
+    valorConcluido = 0
 }
 
-if ((contConcluido.value < 0) || (Number.isNaN(contConcluido.value))){
-    localStorage.removeItem('contConcluido')
-    contConcluido.value = 0
-    valorConcluido = contConcluido.value
+if ((valorPendente < 0) || (Number.isNaN(valorPendente))){
+    localStorage.removeItem('contPendente')
+    valorPendente = 0
 }
 // recupera os dados armazenadas
 carregarTarefa = () =>{
