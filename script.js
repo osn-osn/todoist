@@ -13,12 +13,13 @@ if  ((Number.isNaN(Number(contConcluido.value)))  ||(Number(contConcluido.value)
 }
 
 if ((Number.isNaN(contPendente.value)) || (contPendente.value == null) || (contPendente.value < 0)  ){
-    contPendente.value ??= 0
+    contPendente.value = 0
 }
 
-let valorConcluido = contConcluido.value
+let valorConcluido = Number(contConcluido.value)
 let valorPendente = contPendente.value
 console.log(contConcluido.value)
+console.log(valorConcluido.value)
 
 // recupera os dados armazenadas no navegador por meio do localstorange
 carregarTarefa = () =>{
